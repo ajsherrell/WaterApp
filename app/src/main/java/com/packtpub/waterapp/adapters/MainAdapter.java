@@ -40,7 +40,7 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
     onCreateViewHolder(ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(
                 parent.getContext()).inflate(
-                R.layout.adapter_main, parent, false);
+                R.layout.adapter_main_card_view, parent, false);
         ViewHolder viewHolder = new ViewHolder(v);
         viewHolder.mDateTimeTextView = (TextView) v.findViewById(R.id.main_date_time_textview);
         viewHolder.mCommentTextView = (TextView) v.findViewById(R.id.main_comment_textview);
