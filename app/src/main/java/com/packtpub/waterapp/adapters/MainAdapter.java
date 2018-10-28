@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.packtpub.waterapp.MainActivity;
 import com.packtpub.waterapp.R;
 import com.packtpub.waterapp.models.Drink;
 
@@ -18,6 +19,8 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
 
     private ArrayList<Drink> mDrinks;
     private Context mContext;
+
+
     public static class ViewHolder extends RecyclerView.ViewHolder {
         public TextView mCommentTextView;
         public TextView mDateTimeTextView;
@@ -27,6 +30,12 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
         }
     }
 
+    public MainAdapter(Context context, ArrayList<Drink> drinks) {
+        mDrinks = drinks;
+        mContext = context;
+    }
+
+    @Override
     public MainAdapter.ViewHolder
     onCreateViewHolder(ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(
