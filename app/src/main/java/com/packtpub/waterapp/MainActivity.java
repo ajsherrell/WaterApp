@@ -62,4 +62,20 @@ public class MainActivity extends AppCompatActivity {
         startActivityForResult(intent, REQUEST_NEW_ENTRY);
     }
 
+    //handle result by overriding the onActivityResult method. A new drink will be created
+    // and added to list of drinks. Then notify the adapter of the update to be displayed.
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == REQUEST_NEW_ENTRY && resultCode == RESULT_OK) {
+            Bundle bundle = data.getExtras();
+            Drink newDrink = new Drink();
+            newDrink.comments = bundle.getString("comments");
+            newDrink.imageUri = bundle.getString("uri");
+            newDrink.dateAndTime = new Date();
+            mDrinks.add(newDrink);
+            mAdapter.notifyDataSetChanged();
+        }
+    }
+
 }
