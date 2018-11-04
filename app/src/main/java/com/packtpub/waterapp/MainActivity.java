@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 
 import com.packtpub.waterapp.adapters.MainAdapter;
 import com.packtpub.waterapp.models.Drink;
@@ -43,6 +44,14 @@ public class MainActivity extends AppCompatActivity {
         // make an instance of the adapter
         mAdapter = new MainAdapter(this, mDrinks);
         recyclerView.setAdapter(mAdapter);
+
+        //set anim button elevation
+        findViewById(R.id.main_button_add).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showEntry();
+            }
+        });
 
     }
 }

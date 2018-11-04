@@ -23,6 +23,7 @@
         android:layout_margin="16dp"
         android:tint="@android:color/white"
         android:background="@drawable/button_round_teal_bg"
-        android:src="@android:drawable/ic_input_add"/>
+        android:src="@android:drawable/ic_input_add"
+        android:stateListAnimator="@anim/button_elevation"/>
 
 </RelativeLayout>
