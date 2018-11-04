@@ -1,5 +1,6 @@
 package com.packtpub.waterapp;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -54,4 +55,11 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
+
+    private int REQUEST_NEW_ENTRY = 1;
+    private void showEntry() {
+        Intent intent = new Intent(this, EntryActivity.class);
+        startActivityForResult(intent, REQUEST_NEW_ENTRY);
+    }
+
 }
