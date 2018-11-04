@@ -1,6 +1,8 @@
 package com.packtpub.waterapp.adapters;
 
+import android.content.ContentResolver;
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -8,8 +10,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import com.packtpub.waterapp.MainActivity;
 import com.packtpub.waterapp.R;
 import com.packtpub.waterapp.models.Drink;
 
@@ -60,6 +62,28 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
         holder.mDateTimeTextView.setText(currentDrink.dateAndTime.toString());
         if (currentDrink.imageUri != null) {
             holder.mImageView.setImageURI(Uri.parse(currentDrink.imageUri));
+        }
+
+        // add work to display thumbnail images
+        if (currentDrink.imageUri != null) {
+            Bitmap bitmap = getBitmapFromUri(Uri.parse(currentDrink.imageUri));
+            holder.mImageView.setImageBitmap(bitmap);
+        }
+
+    }
+
+    //create getBitmapFromUri() method if Uri is known for the item then display item
+    // thumbnail
+    public Bitmap getBitmapFromUri(Uri uri) {
+        mContext.getContentResolver().notifyChange(uri, null);
+        ContentResolver cr = mContext.getContentResolver();
+        try {
+            Bitmap bitmap = android.provider.MediaStore.Images.Media.getBitmap(cr, uri);
+            return bitmap;
+        }
+        catch (Exception e) {
+            Toast.makeText(mContext, e.getMessage(), Toast.LENGTH_SHORT).show();
+            return null;
         }
     }
 
