@@ -42,7 +42,11 @@ public class EntryActivity extends Activity {
 
     }
 
-    // create a takePicture method and add implemention for it. Create a file with
+    // the below takePicture() seems to not work on Emulator
+    // go to: https://stackoverflow.com/questions/48117511/exposed-beyond-app-through-clipdata-item-geturi
+    // try the FileProvider answer on this website in the future.
+
+    // create a takePicture method and add implementation for it. Create a file with
     // a unique image name up front by using a time stamp and tell image capture
     // intent to use URI for that file.
     private int REQUEST_IMAGE_CAPTURE = 1;
@@ -88,10 +92,10 @@ public class EntryActivity extends Activity {
         Intent intent = new Intent();
         intent.putExtra("comments", editComment.getText().toString());
         if (mUri != null) {
-            intent.putExtra("uri", "file://" + mUri.getPath().toString());
-            setResult(Activity.RESULT_OK, intent);
-            finish();
+            intent.putExtra("uri", "file://" + mUri.getPath());
         }
+        setResult(Activity.RESULT_OK, intent);
+        finish();
     }
 
 }

@@ -60,9 +60,9 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
         Drink currentDrink = mDrinks.get(position);
         holder.mCommentTextView.setText(currentDrink.comments);
         holder.mDateTimeTextView.setText(currentDrink.dateAndTime.toString());
-        if (currentDrink.imageUri != null) {
-            holder.mImageView.setImageURI(Uri.parse(currentDrink.imageUri));
-        }
+//        if (currentDrink.imageUri != null) {
+//            holder.mImageView.setImageURI(Uri.parse(currentDrink.imageUri));
+//        } // why the heck was this here?
 
         // add work to display thumbnail images
         if (currentDrink.imageUri != null) {
